@@ -13,13 +13,13 @@ const styles = StyleSheet.create({
    listItem: {
      alignItems: 'center',
      justifyContent: 'center',
-     padding: 15,
+     padding: 20,
      borderColor: '#e1e2e3',
      borderBottomWidth: 1,
      flex: 1
    },
    videoImage: {
-     width: screen.width - 30,
+     width: screen.width - 40,
      padding: 20,
      height: 180
    },
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
    videoIconChannelContainer: {
      flex: 1,
      justifyContent: 'flex-start',
-     alignItems: 'center',
    },
    videoIconChannel: {
      backgroundColor: 'gray',
@@ -40,14 +39,17 @@ const styles = StyleSheet.create({
      borderRadius: 22,
    },
    videoTextContainer: {
-     flex: 4
+     flex: 4,
+     marginLeft: -10,
+     paddingTop: 5,
    },
    videoTitle: {
      fontSize: 16,
-     fontWeight: '400'
+     fontWeight: '400',
    },
    videoDescription: {
-     fontSize: 12
+     fontSize: 12,
+     color: 'grey'
    }
 });
 

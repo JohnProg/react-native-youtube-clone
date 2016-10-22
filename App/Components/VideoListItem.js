@@ -17,7 +17,7 @@ const VideoListItem = ({item, onVideoSelect}) => {
       <View style={ styles.listItem }>
         <Image
           style={ styles.videoImage }
-          source={ {uri: 'https://i.ytimg.com/vi/lic0oCDMfwk/hqdefault.jpg'} } />
+          source={ {uri: item.snippet.thumbnails.high.url} } />
 
         <View style={ styles.videoContainer }>
           <View style={ styles.videoIconChannelContainer }>
@@ -27,10 +27,11 @@ const VideoListItem = ({item, onVideoSelect}) => {
 
           <View style={ styles.videoTextContainer }>
             <Text style={ styles.videoTitle }>
-              {item}
+              { ((item.snippet.title).length > 37) ? (((item.snippet.title).substring(0, 37 - 3)) + '...') : item.snippet.title }
             </Text>
             <Text style={ styles.videoDescription }>
-              {item} Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              { ((item.snippet.channelTitle).length > 30) ? (((item.snippet.channelTitle).substring(0, 30 - 3)) + '...') : item.snippet.channelTitle }
+              - { item.snippet.publishedAt } ago
             </Text>
           </View>
         </View>

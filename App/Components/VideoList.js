@@ -11,11 +11,11 @@ const {
  } = ReactNative;
 
 const VideoList = ({items, onVideoSelect}) => {
-   renderRow = (text, sId, rId) => {
+   renderRow = (video, sId, rId) => {
      return (
        <VideoListItem
          key={ rId }
-         item={ text }
+         item={ video }
          onVideoSelect={ onVideoSelect }
        />
      );
@@ -24,7 +24,6 @@ const VideoList = ({items, onVideoSelect}) => {
    return (
      <ListView dataSource={ items }
        style={styles.listView}
-       contentContainerStyle={styles.contentContainerStyle}
        renderRow={ this.renderRow } />
    )
  }
@@ -32,9 +31,6 @@ const VideoList = ({items, onVideoSelect}) => {
  const styles = StyleSheet.create({
    listView: {
      flex: 4
-   },
-   contentContainerStyle: {
-     justifyContent: 'center'
    }
  });
 

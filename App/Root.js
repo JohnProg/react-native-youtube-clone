@@ -11,6 +11,7 @@ import {
 import SearchBar from './Components/SearchBar';
 import VideoList from './Components/VideoList';
 import Loader    from './Components/Loader';
+import Api       from './Utils/Api'
 
 export default class App extends Component {
   constructor(props) {
@@ -20,13 +21,15 @@ export default class App extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
 
-    const data = ['Video1', 'Video2', 'Video3', 'Video4', 'Video5'];
-
     this.state = {
       loading: false,
-      videos: dataSource.cloneWithRows(data),
+      videos: dataSource,
       selectedVideo: null
     };
+  }
+
+  componentDidMount() {
+    this._searchData.call(this, 'blink 182');
   }
 
   render() {
@@ -42,7 +45,7 @@ export default class App extends Component {
           items={ this.state.videos }
           onVideoSelect={ selectedVideo => {
             this.setState({selectedVideo});
-            alert(selectedVideo);
+            alert(JSON.stringify(selectedVideo));
           } }
         />
 
@@ -54,7 +57,15 @@ export default class App extends Component {
 
   _searchData(query) {
     this.setState({loading: true});
-    setTimeout(()=>this.setState({loading: false}), 3000);
+
+    Api.search(query)
+    .then(data => {
+      this.setState({
+        videos: this.state.videos.cloneWithRows(data.items),
+        selectedVideo: data.items[0],
+        loading: false
+      });
+    });
   }
 }
 
