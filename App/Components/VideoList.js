@@ -7,7 +7,6 @@ const {
   View,
   Text,
   ListView,
-  StyleSheet
  } = ReactNative;
 
 const VideoList = ({items, onVideoSelect}) => {
@@ -23,15 +22,9 @@ const VideoList = ({items, onVideoSelect}) => {
 
    return (
      <ListView dataSource={ items }
-       style={styles.listView}
+       style={{flex: 4}}
        renderRow={ this.renderRow } />
    )
  }
-
- const styles = StyleSheet.create({
-   listView: {
-     flex: 4
-   }
- });
 
  export default VideoList;
