@@ -1,6 +1,7 @@
 const ReactNative = require('react-native');
 
-import React from 'react';
+import React         from 'react';
+import VideoListItem from './VideoListItem';
 
 const {
   View,
@@ -12,9 +13,11 @@ const {
 const VideoList = ({items, onVideoSelect}) => {
    renderRow = (text, sId, rId) => {
      return (
-       <Text style={ styles.row }>
-         { rId }. { text }
-       </Text>
+       <VideoListItem
+         key={ rId }
+         item={ text }
+         onVideoSelect={ onVideoSelect }
+       />
      );
    };
 
