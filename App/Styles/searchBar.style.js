@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    alignSelf: 'center'
+    alignSelf: 'center',
   }
 });
 
