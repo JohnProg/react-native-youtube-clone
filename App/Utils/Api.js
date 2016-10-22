@@ -1,4 +1,4 @@
-const API_KEY = '<PUT-YOUR-KEY-HERE>';
+const API_KEY = 'AIzaSyBwwLUyEEYHGVsNI7QUskJx0aK2U5isnxQ';
 
 export default class Api {
   static search(query) {
