@@ -7,18 +7,29 @@ import {
   View
  } from 'react-native';
 
+import SearchBar from './Components/SearchBar';
+import Loader    from './Components/Loader';
+
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false
+    };
+  }
   render() {
     return (
       <View style={ styles.container }>
-        <Text style={{ width: 100 }}>Hello world</Text>
-        <TextInput
-           placeholder={'Search...'}
-           returnKeyType={'search'}
-           style={ styles.inputSearch }
-         />
+        <SearchBar onSubmit={this._searchData.bind(this)}/>
+        <Loader visible={this.state.loading} />
       </View>
     )
+  }
+
+  _searchData(query) {
+    this.setState({loading: true});
+    setTimeout(()=>this.setState({loading: false}), 3000);
   }
 }
 
@@ -27,15 +38,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center', // align horizontal
     justifyContent: 'center', // align vertical
-  },
-  inputSearch: {
-    padding: 5,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    height: 40,
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
   }
 })
