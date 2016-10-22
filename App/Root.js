@@ -10,6 +10,7 @@ import {
 
 import SearchBar from './Components/SearchBar';
 import VideoList from './Components/VideoList';
+import VideoDetail from './Components/VideoDetail';
 import Loader    from './Components/Loader';
 import Api       from './Utils/Api'
 
@@ -24,12 +25,12 @@ export default class App extends Component {
     this.state = {
       loading: false,
       videos: dataSource,
-      selectedVideo: null
+      selectedVideo: ''
     };
   }
 
   componentDidMount() {
-    this._searchData.call(this, 'blink 182');
+    this._searchData.call(this, 'React Native');
   }
 
   render() {
@@ -40,12 +41,13 @@ export default class App extends Component {
 
         <SearchBar onSubmit={this._searchData.bind(this)}/>
 
+        <VideoDetail video={this.state.selectedVideo} loading={this.state.loading}/>
+
         <VideoList
           style={ styles.videoList }
           items={ this.state.videos }
           onVideoSelect={ selectedVideo => {
             this.setState({selectedVideo});
-            alert(JSON.stringify(selectedVideo));
           } }
         />
 
