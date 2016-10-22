@@ -31,7 +31,6 @@ export default class Loader extends Component {
     return (
       <View style={ styles.container }>
         <ActivityIndicator
-          color='white'
           size='large'
           />
       </View>

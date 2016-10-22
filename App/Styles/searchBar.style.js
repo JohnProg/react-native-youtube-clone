@@ -1,5 +1,6 @@
 import {
   StyleSheet,
+  Platform
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
   inputSearch: {
     padding: 5,
     borderColor: 'gray',
-    borderWidth: 1,
+    borderWidth: (Platform.OS === 'ios') ? 1 : 0,
     borderRadius: 5,
     height: 40,
     flex: 1,
